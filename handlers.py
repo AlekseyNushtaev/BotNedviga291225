@@ -89,10 +89,7 @@ async def check_subscription_handler(callback: CallbackQuery, state: FSMContext)
             logger.error(f"Ошибка при проверке подписки: {channel_error}")
             await callback.message.edit_text(
                 "⚠️ Произошла ошибка при проверке подписки. Пожалуйста, попробуйте позже.",
-                reply_markup=create_kb(2,
-                                       sub_check="✅ Я подписался",
-                                       subscribe="📢 Подписаться на канал")
-            )
+                reply_markup=subscribe_kb())
 
     except Exception as e:
         logger.error(f"Ошибка в check_subscription_handler: {e}")
